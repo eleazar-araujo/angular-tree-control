@@ -1,6 +1,6 @@
 /* commonjs package manager support (eg componentjs) */
 if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){
-  module.exports = 'treeControl';
+    module.exports = 'treeControl';
 }
 (function ( angular ) {
     'use strict';
@@ -80,7 +80,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
         ensureDefault($scope.options, "allowDeselect", true);
         ensureDefault($scope.options, "isSelectable", defaultIsSelectable);
     }
-    
+
     angular.module( 'treeControl', [] )
         .constant('treeConfig', {
             templateUrl: null
@@ -100,9 +100,9 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 else
                     return "";
             }
-            
-            
-            
+
+
+
             return {
                 restrict: 'EA',
                 require: "treecontrol",
@@ -121,11 +121,11 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                     filterComparator: "=?"
                 },
                 controller: ['$scope', '$templateCache', '$interpolate', 'treeConfig', function ($scope, $templateCache, $interpolate, treeConfig) {
-                    
+
                     $scope.options = $scope.options || {};
-                    
+
                     ensureAllDefaultOptions($scope);
-                  
+
                     $scope.selectedNodes = $scope.selectedNodes || [];
                     $scope.expandedNodes = $scope.expandedNodes || [];
                     $scope.expandedNodesMap = {};
@@ -193,8 +193,8 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                             var parentNode = (transcludedScope.$parent.node === transcludedScope.synteticRoot)?null:transcludedScope.$parent.node;
                             var path = createPath(transcludedScope);
                             $scope.onNodeToggle({node: transcludedScope.node, $parentNode: parentNode, $path: path,
-                              $index: transcludedScope.$index, $first: transcludedScope.$first, $middle: transcludedScope.$middle,
-                              $last: transcludedScope.$last, $odd: transcludedScope.$odd, $even: transcludedScope.$even, expanded: expanding});
+                                $index: transcludedScope.$index, $first: transcludedScope.$first, $middle: transcludedScope.$middle,
+                                $last: transcludedScope.$last, $odd: transcludedScope.$odd, $even: transcludedScope.$even, expanded: expanding});
 
                         }
                     };
@@ -243,8 +243,8 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                                 var parentNode = (transcludedScope.$parent.node === transcludedScope.synteticRoot)?null:transcludedScope.$parent.node;
                                 var path = createPath(transcludedScope)
                                 $scope.onSelection({node: selectedNode, selected: selected, $parentNode: parentNode, $path: path,
-                                  $index: transcludedScope.$index, $first: transcludedScope.$first, $middle: transcludedScope.$middle,
-                                  $last: transcludedScope.$last, $odd: transcludedScope.$odd, $even: transcludedScope.$even});
+                                    $index: transcludedScope.$index, $first: transcludedScope.$first, $middle: transcludedScope.$middle,
+                                    $last: transcludedScope.$last, $odd: transcludedScope.$odd, $even: transcludedScope.$even});
                             }
                         }
                     };
@@ -267,11 +267,11 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
 
                     //tree template
                     $scope.isReverse = function() {
-                      return !($scope.reverseOrder === 'false' || $scope.reverseOrder === 'False' || $scope.reverseOrder === '' || $scope.reverseOrder === false);
+                        return !($scope.reverseOrder === 'false' || $scope.reverseOrder === 'False' || $scope.reverseOrder === '' || $scope.reverseOrder === false);
                     };
 
                     $scope.orderByFunc = function() {
-                      return $scope.orderBy;
+                        return $scope.orderBy;
                     };
 //                    return "" + $scope.orderBy;
 
@@ -296,9 +296,7 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                             '<ul {{options.ulClass}} >' +
                             '<li ng-repeat="node in node.{{options.nodeChildren}} | filter:filterExpression:filterComparator {{options.orderBy}}" ng-class="headClass(node)" {{options.liClass}}' +
                             'set-node-to-data>' +
-                            '<i class="tree-branch-head" ng-class="iBranchClass()" ng-click="selectNodeHead(node)"></i>' +
-                            '<i class="tree-leaf-head {{options.iLeafClass}}"></i>' +
-                            '<div class="tree-label {{options.labelClass}}" ng-class="[selectedClass(), unselectableClass()]" ng-click="selectNodeLabel(node)" tree-transclude></div>' +
+                            '<div class="tree-label {{options.labelClass}}" ng-class="[selectedClass(), unselectableClass()]" ng-click="selectNodeHead(node)" tree-transclude></div>' +
                             '<treeitem ng-if="nodeExpanded()"></treeitem>' +
                             '</li>' +
                             '</ul>';
